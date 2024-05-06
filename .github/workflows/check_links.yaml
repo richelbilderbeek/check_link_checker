@@ -24,7 +24,7 @@ jobs:
 
       - name: Remove lines with false positives
         run: |
-          sed -i 's|[Broken link to website](https://absentwebsite.com/)||g' README.md
+          sed -i '/absentwebsite/d' README.md
 
       # This is the actual job
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
