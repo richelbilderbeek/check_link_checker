@@ -1,4 +1,4 @@
-name: check_links
+name: check-links
 
 on:
   push:
