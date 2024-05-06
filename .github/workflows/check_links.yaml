@@ -22,9 +22,17 @@ jobs:
       - name: Internal links must checked, do not allow '400' in the 'aliveStatusCodes' of mlc_config.json
         run: if [[ $(grep --regexp "[^0-9]400[^0-9]" mlc_config.json | wc --lines) == "1" ]]; then echo "FOUND"; exit 42; fi
 
+      # Check if mlc_config.json is a valid JSON
+      #    INPUT_SCHEMA: /path/to/schema.json
+      - name: Validate JSON
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_JSONS: mlc_config.json
+
       - name: Remove lines with false positives
         run: |
           sed -i '/absentwebsite/d' README.md
+
 
       # This is the actual job
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
