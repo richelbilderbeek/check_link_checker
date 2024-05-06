@@ -22,7 +22,5 @@ jobs:
           use-verbose-mode: 'yes'
 
       - name: Yay! The job has failed! It detected broken links put in on purpose!
-        run: |
-          echo "Yay! The job has failed! It detected broken links put in on purpose!"
-          exit 0
+        run: success()
         if: ${{ failure() }}
