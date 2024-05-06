@@ -22,5 +22,5 @@ jobs:
           use-verbose-mode: 'yes'
 
       - name: Yay! The job has failed! It detected broken links put in on purpose!
-        run: success()
+        run: exit 0
         if: ${{ failure() }}
