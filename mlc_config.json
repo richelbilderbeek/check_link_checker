@@ -1,0 +1,17 @@
+{
+  "aliveStatusCodes": [200, 403, 418, 500, 503],
+  "ignorePatterns": [
+    {
+      "pattern": "github/workspace/docs/software/overview$"
+    },
+    {
+      "pattern": "^https://bianca.uppmax.uu.se"
+    },
+    {
+      "pattern": "swcarpentry.github.io/r-novice-inflammation/"
+    }
+    {
+      "pattern": "http://hostname:8888"
+    }
+  ]
+}
