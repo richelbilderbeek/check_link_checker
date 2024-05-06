@@ -5,12 +5,6 @@
       "pattern": "github/workspace/docs/software/overview$"
     },
     {
-      "pattern": "^https://bianca.uppmax.uu.se"
-    },
-    {
-      "pattern": "swcarpentry.github.io/r-novice-inflammation/"
-    },
-    {
       "pattern": "http://hostname:8888"
     }
   ]
