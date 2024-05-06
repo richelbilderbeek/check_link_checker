@@ -20,6 +20,7 @@ jobs:
           config-file: 'mlc_config.json'
           use-quiet-mode: 'no'
           use-verbose-mode: 'yes'
+          continue-on-error: 'true'
 
       - name: Yay! The job has failed! It detected broken links put in on purpose!
         run: exit 0
