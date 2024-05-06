@@ -1,10 +1,10 @@
+name: check_link_checker
+
 on:
   push:
   pull_request:
   schedule:
   - cron: "0 0 12 * *"
-
-name: check-links
 
 jobs:
   check-links:
