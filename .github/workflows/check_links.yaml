@@ -14,10 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #- name: Remove lines with false positives
-      #  run: |
-      #    sed -i 's/.*check_links.yaml.*//g' README.md
-      #    sed -i 's/.*check_spelling.yaml.*//g' README.md
 
       # If there is a valid external link that fails,
       # add it to mlc_config.json
@@ -27,10 +23,23 @@ jobs:
       - name: Internal links must checked, do not allow '400' in the 'aliveStatusCodes' of mlc_config.json
         run: if [[ $(grep --regexp "[^0-9]400[^0-9]" mlc_config.json | wc --lines) == "1" ]]; then echo "FOUND"; exit 42; fi
 
-      # Need '../' as path, else the command will search in './node_modules/*'
-      # Full command as could be found in log:
-      #
-      #   find . -name '*.md' -not -path './node_modules/*' -exec markdown-link-check '{}' --config mlc_config.json ';'
+      # This job must fail, as there are broken links
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: 'mlc_config.json'
+          use-quiet-mode: 'no'
+          use-verbose-mode: 'yes'
+
+      - name: Yay! The job has failed! It detected broken links put in on purpose!
+        run: echo "Yay! The job has failed! It detected broken links put in on purpose!"
+        if: ${{ failure() }}
+
+      #- name: Remove lines with false positives
+      #  run: |
+      #    sed -i 's/.*check_links.yaml.*//g' README.md
+      #    sed -i 's/.*check_spelling.yaml.*//g' README.md
+
+      # This is the actual job
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           config-file: 'mlc_config.json'
