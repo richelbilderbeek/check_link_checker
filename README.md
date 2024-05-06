@@ -10,6 +10,6 @@ This repo allows me to check myself in a simpler context.
 
 # Broken link
 
-This file contains a broken link on purpose:
+Here are broken links, to check the link checker:
 
-[Broken link](https://absentwebsite.com/)
+[Broken link to website](https://absentwebsite.com/)
