@@ -22,6 +22,11 @@ jobs:
           use-verbose-mode: 'yes'
         continue-on-error: true
 
+      - name: No! This job should have failed! It detected broken links put in on purpose!
+        run: exit 1
+        if: ${{ success() }}
+
       - name: Yay! The job has failed! It detected broken links put in on purpose!
         run: exit 0
         if: ${{ failure() }}
+
